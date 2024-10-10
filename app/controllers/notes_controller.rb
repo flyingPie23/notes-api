@@ -5,6 +5,11 @@ class NotesController < ApplicationController
     render json: @notes
   end
 
+  def show
+    @note = Note.find(params[:id])
+    render json: @note
+  end
+
   def create
     @note = Note.new(note_params)
 
@@ -14,6 +19,8 @@ class NotesController < ApplicationController
       render json: @note.errors, status: :unprocessable_entity
     end
   end
+
+
 
   private
 
